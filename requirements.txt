@@ -12,7 +12,7 @@ chardet==4.0.0
 charset-normalizer==2.0.3
 coincurve==15.0.1
 cytoolz==0.11.0
-Django==3.2.5
+Django==3.2.7
 django-web3-auth @ https://github.com/atereshkin/django-web3-auth/archive/master.zip
 eth-abi==2.1.1
 eth-account==0.5.5
