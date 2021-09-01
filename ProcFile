@@ -1,1 +1,1 @@
-web: gunicorn tqyeem.wsgi
+web: gunicorn tqyeem.wsgi --log-file -
