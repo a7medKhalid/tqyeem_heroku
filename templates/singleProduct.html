@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
+    <script src="{% static 'dashboard.js' %}"></script>
+  </head>
+
+  <body style="font-family: 'tajawal'; direction: rtl" class="bg-gray-100">
+    <div class="container mx-auto px-5 mt-10">
+      <div class="flex flex-col items-center justify-center">
+        <img src="{% static 'logo.png' %}" alt="logo" width="85" />
+        <div class="text-yellow-500 text-sm">تقييم</div>
+      </div>
+
+      <p id="uri">{{ uri }}</p>
+
+      <script type="text/javascript">
+        function getProduct() {
+           
+          var uri = document.getElementById("uri").innerHTML
+          fetch(uri)
+          .then(res => res.json())
+          .then(data => {
+            document.getElementById('pimg').src = data.image
+            document.getElementById('pname').innerHTML = data.name
+            document.getElementById('pdes').innerHTML = data.description
+            
+            } )
+
+          
+            
+        }
+        window.onload = getProduct
+        </script>
+
+      <div class="md:grid grid-cols-2 gap-5">
+        <img id="pimg" class="bg-gray-300 w-full h-96 rounded-lg mt-10"></img>
+        <div>
+          <!-- اسم المنتج -->
+          
+          
+          
+          <div id="pname" class="text-yellow-500 text-2xl font-bold mt-10 mb-3">
+
+          </div>
+
+          <!-- التقييمات -->
+          <div class="flex">
+            <i class="fas fa-star ml-5 text-yellow-500"></i>
+            <i class="fas fa-star ml-5 text-yellow-500"></i>
+            <i class="fas fa-star ml-5 text-yellow-500"></i>
+            <i class="fas fa-star ml-5 text-yellow-500"></i>
+            <i class="fas fa-star ml-5 text-yellow-500"></i>
+          </div>
+
+          <!-- عدد التقييم -->
+          <div class="text-gray-400 text-sm mt-2">التقييم 5 نجوم من 5</div>
+
+          <!-- وصف المنتج -->
+          <div class="text-lg font-bold text-yellow-500 mt-4">وصف المنتج:</div>
+          <div id="pdes" class="text-gray-500 text-sm mt-1">
+            
+          </div>
+
+          <div class="text-yellow-500 font-bold text-lg mt-4">
+            المتاجر التي تبيع هذا المنتج:
+          </div>
+          <div class="flex">
+            <!-- البائعين المعتمدين -->
+            {% for seller in sellers %}
+            <a class="mt-1 ml-3 text-blue-500 font-bold underline" href=" {{ seller.url}}"
+              >{{seller.name}}</a>
+            {% endfor %}
+            
+          </div>
+        </div>
+        <!--نهاية وصف المنتج-->
+      </div>
+      <form method="post">
+        {% csrf_token %}
+        <div class="text-lg font-bold text-yellow-500 mt-10 mb-2">اضف تقييم:</div>
+        <div class="flex">
+          <div class="flex flex-col mr-5">
+            <label for="" class="text-gray-400">كم تقييمك</label>
+            <input name="rating">
+          </div>
+        </div>
+        <div class="flex flex-col mt-3">
+          <label for="" class="text-gray-400">تعليقك</label>
+          <textarea name="ratingText" cols="30" rows="10"></textarea>
+        </div>
+        <input type="submit" value="إضافة تقييم"
+          class="
+            bg-yellow-500
+            font-bold
+            text-white text-md
+            rounded-lg
+            px-5
+            py-2
+            mt-5
+          "
+        >
+      </form>
+
+      <!-- التقييمات -->
+      <div class="text-yellow-500 font-bold text-lg mt-10 mb-3">التقييمات:</div>
+
+      
+      
+
+      
+       
+      {% for review in finalData %}
+      <div class="flex">
+        <div class="text-gray-400">{{ review.rating }}</div>
+      </div>
+      <div class="text-gray-500">
+        {{ review.text }}
+      </div>
+      <hr class="mb-5 mt-1" />
+      {% endfor %}
+      
+    <button onclick="connectProduct()" id="enableMetamask" class="bg-blue-200 py-2 px-10 rounded-lg mt-20">
+      <div class="text-xl text-blue-500 font-bold">
+         اتصل بالمحفظة إذا كنت مالك المنتج
+      </div>
+    </button>
+
+  <div id="owner" style="display:none">
+    <!-- Trusted sellers Start -->
+      <!-- Trusted sellers header Start -->
+      <div class="md:grid grid-cols-4 mt-20">
+        <div class="text-xl text-gray-400">البائعين المعتمدين</div>
+        <form method="POST">
+          {% csrf_token %}
+          <input
+            name="sellerName"
+            type="text"
+            placeholder="اسم البائع"
+            class="
+              bg-white
+              px-5
+              py-2
+              mb-3
+              rounded-lg
+              md:rounded-r-lg
+              text-black
+              w-full
+              outline-none
+            "
+          />
+          <input
+            name="sellerLink"
+            type="text"
+            placeholder="رابط البائع"
+            class="
+              bg-white
+              px-5
+              py-2
+              mb-3
+              mr-0
+              md:mr-2
+              w-full
+              rounded-lg
+              md:rounded-l-lg
+              ml-0
+              text-black
+              outline-none
+            "
+          />
+          <button
+          type="submit"
+          class="
+            bg-yellow-500
+            w-full
+            text-white
+            px-5
+            py-0
+            h-10
+            sm:rounded-l-lg
+            rounded-lg
+          "
+          >
+          إضافة المنتج
+          </button>
+        </form>
+
+        
+      </div>
+      
+
+      
+    <!-- Trusted sellers header End -->
+      {% for seller in sellers %}
+      <div class="md:grid grid-cols-3 gap-5">
+        <div class="bg-white mt-5 px-3 py-5 rounded-lg">
+          <div class="text-yellow-500 font-bold">{{seller.name}}</div>
+          <div class="text-gray-400 text-sm mt-2">
+            الرابط: <a href="{{ seller.url }}">{{ seller.url }}</a>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+      <!-- Trusted sellers end -->
+      <!-- trusted dealers -->
+      <div class="text-gray-400 text-xl mt-20">الموزعين المعتمدين</div>
+      <div class="text-yellow-500 font-bold text-2xl mb-20">قريبا...</div>
+  </div>
+   
+    
+  </body>
+</html>

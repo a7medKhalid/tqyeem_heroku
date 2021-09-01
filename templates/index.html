@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+
+<body style="font-family:'tajawal';" class="bg-image">
+  <div class="container mx-auto px-2 lg:px-52">
+    <!-- Container start -->
+
+    <!-- Header section -->
+    <div class="header flex flex-col justify-center items-center my-5">
+      <img src="{% static 'logo.png' %}" width="172" alt="logo">
+      <div class=" text-xl text-yellow-500 mt-2">
+      تقييم
+    </div>
+    <div class=" text-3xl mt-20 font-bold text-center">
+      اعرض منتجك وحافظ على تقييماته على جميع المنصات
+    </div>
+    <a href="{% url 'dashboard' %}"class="bg-blue-200 py-2 px-10 rounded-lg mt-20">
+      <div class="text-xl text-blue-500 font-bold">
+        أضف منتجك الآن
+      </div>
+    </a>
+  
+  </div>
+  <!-- End header -->
+
+  <!-- Section-1 start -->
+  <div class="grid md:grid-cols-2 gap-28 flex justify-between items-center mt-10">
+    <!-- left side -->
+
+    <div style="max-width:350px" class="flex justify-center items-center">
+      <img src="{% static 'handshake-blue.png' %}" alt="handshake image" class="w-full">
+    </div>
+    <!-- right side  -->
+    <div class="flex flex-col items-end  break-word bg-image">
+
+      <div class="bg-blue-200 py-2 px-6 mb-5 rounded-lg">
+        <div class="text-blue-500  flex items-center justify-center  font-bold ">
+          تقييم
+          <i class="fas fa-star ml-1"></i>
+        </div>
+      </div>
+      <div class="font-bold text-2xl text-right">
+        نظام تقييم موثوق غير قابل للتعديل
+      </div>
+      <div class="text-xl text-gray-500 text-right mt-5">
+        <!--اكتب هنا -->
+      </div>
+    </div>
+  </div>
+  <!-- Section-1 end -->
+  <!-- Section-2 start -->
+  <div class="grid md:grid-cols-2 gap-28 items-center justify-end mt-10 ">
+    <!-- left side -->
+    <div class="flex flex-col items-end  break-word order-last md:order-first bg-image">
+      <div class="bg-blue-200 py-2 px-6 mb-5 rounded-lg">
+        <div class="text-blue-500  flex items-center justify-center  font-bold ">
+          قاعدة بيانات
+          <i class="fas fa-database ml-2"></i>
+        </div>
+      </div>
+      <div class="font-bold text-2xl text-right">
+        قاعدة بيانات مشتركة تربط المنتج
+        بتقييماته في جميع المنصات
+      </div>
+      <div class="text-xl text-gray-500 text-right mt-5">
+        <!--اكتب هنا -->
+      </div>
+    </div>
+    <!-- right side -->
+    <div style="max-width:350px" class="flex justify-center items-center">
+      <img src="{% static 'database.png' %}" alt="database image" class="w-full">
+    </div>
+  </div>
+
+  <!-- Section-2 end -->
+
+  <!-- Section-3 start -->
+  <div class="grid md:grid-cols-2 gap-28 flex items-center justify-between mt-10">
+    <!-- left side -->
+    <div style="max-width:350px" class="flex justify-center items-center">
+      <img src="{% static "success.png" %}" alt="success image" class="w-full">
+    </div>
+    <!-- right side  -->
+    <div class="flex flex-col items-end  break-word bg-image">
+      <div class="bg-indigo-200 py-2 px-6 mb-5 rounded-lg">
+        <div class="text-indigo-500  flex items-center justify-center  font-bold ">
+          سمعة
+          <i class="fas fa-user ml-2"></i>
+        </div>
+      </div>
+      <div class="font-bold text-2xl text-right">
+        يمكن مالك المنتج من امتلاك سمعته
+      </div>
+      <div class="text-xl text-gray-500 text-right mt-5">
+        <!--اكتب هنا -->
+      </div>
+    </div>
+  </div>
+  <!-- Section-3 end -->
+  <!-- Section-4 start -->
+  <div class="grid md:grid-cols-2 gap-28 flex items-center justify-between mt-10">
+    <!-- left side -->
+    <div class="flex flex-col items-end  break-word order-last md:order-first bg-image">
+      <div class="bg-indigo-200 py-2 px-6 mb-5 rounded-lg">
+        <div class="text-indigo-500  flex items-center justify-center  font-bold ">
+          ثقة
+          <i class="fas fa-handshake ml-2"></i>
+        </div>
+      </div>
+      <div class="font-bold text-2xl text-right">
+        يتيح تقييمات موثوقة للعميل
+      </div>
+      <div class="text-xl text-gray-500 text-right mt-5">
+        <!--اكتب هنا -->
+      </div>
+    </div>
+    <!-- right side  -->
+    <div style="max-width:350px" class="flex justify-center items-center">
+      <img src="{% static "handshake-purple.png" %}" alt="handshake-purple.png image" class="w-full">
+    </div>
+  </div>
+  <!-- Section-4 end -->
+  <!-- Section-5 start -->
+  <div class="grid md:grid-cols-2 gap-28 flex items-center justify-between mt-10">
+    <!-- left side -->
+    <div style="max-width:350px" class="flex justify-center items-center">
+      <img src="{% static "asia.png" %}" alt="asia image" class="w-full">
+    </div>
+    <!-- right side  -->
+    <div class="flex flex-col items-end  break-word bg-image">
+      <div class="bg-purple-200 py-2 px-6 mb-5 rounded-lg">
+        <div class="text-purple-500  flex items-center justify-center  font-bold ">
+          المصدر
+          <i class="fas fa-map-pin ml-2"></i>
+        </div>
+      </div>
+      <div class="font-bold text-2xl text-right">
+        يسهل متابعة المصنع والمورد لآراء
+        العملاء في المنتج
+      </div>
+      <div class="text-xl text-gray-500 text-right mt-5">
+        <!--اكتب هنا -->
+      </div>
+    </div>
+  </div>
+  <!-- Section-5 end -->
+  <!-- Section-6 start -->
+  <div class="grid md:grid-cols-2 gap-28 flex items-center mt-10">
+    <!-- left side -->
+    <div class="flex flex-col items-end  break-word order-last md:order-first bg-image">
+      <div class="bg-purple-200 py-2 px-6 mb-5 rounded-lg">
+        <div class="text-purple-500  flex items-center justify-center  font-bold ">
+          راحة
+          <i class="fas fa-thumbs-up ml-2"></i>
+        </div>
+      </div>
+      <div class="font-bold text-2xl text-right">
+        يضيف عنصر ثقة للعلاقة بين البائع والعميل
+        ويريحه من عناء متابعة التقييمات
+      </div>
+      <div class="text-xl text-gray-500 text-right mt-5">
+        <!--اكتب هنا -->
+      </div>
+    </div>
+    <!-- right side  -->
+    <div style="max-width:350px" class="flex justify-end">
+      <img src="{% static "comfort.png" %}" alt="comfort.png image" class="w-full">
+    </div>
+  </div>
+  <!-- Section-6 end -->
+
+  <!-- Container end -->
+  </div>
+  <!-- footer -->
+  <div class="md:grid grid-cols-2 mx-auto md:px-52 py-20 bg-gray-800 text-center">
+    <div class="flex">
+      <div class="bg-blue-200 w-full  py-2 px-24 rounded-lg ">
+        <a href="#" class="text-blue-500 font-bold ">
+          سجل الآن
+        </a>
+      </div>
+
+    </div>
+
+    <div class="flex justify-end">
+      <div class="text-2xl font-bold text-white order-first md:order-last">
+        ! سجل الآن كبائع واحصل على لوحة التحكم الخاصة بك
+      </div>
+
+    </div>
+  </div>
+  <style>
+    body {
+      position: relative;
+    }
+
+    .bg-image::before {
+      opacity: 0.05;
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: url('images/background-image.png');
+      background-position: center;
+      z-index: -222;
+    }
+  </style>
+</body>
+
+</html>
