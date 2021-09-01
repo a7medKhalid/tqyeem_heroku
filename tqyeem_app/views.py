@@ -477,14 +477,6 @@ def test(request):
     return HttpResponse(reviews)
 # @login_required¬
 def dashboard_view(request):
-	# get user addrss from django
-	userAddress = request.user.address
-	# get product numebrs from contract
-
-
-	# return every product name and link
-
-	# optiinal: get data from links
 
 
 	return render(request,"dashboard.html")
